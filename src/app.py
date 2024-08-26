@@ -48,11 +48,15 @@ def add_member():
     if 'lucky_numbers' not in body:
         return 'You need to specify the lucky_numbers', 400
     
-    added_member = jackson_family.add_member({
-        "first_name": body["first_name"],
-        "age": body["age"],
-        "lucky_numbers": body["lucky_numbers"],
-    })
+    member = request.json
+    jackson_family.add_member(member)
+    return {}, 200
+    
+    # added_member = jackson_family.add_member({
+        # "first_name": body["first_name"],
+        # "age": body["age"],
+        # "lucky_numbers": body["lucky_numbers"],
+    # })
     
     return jsonify(added_member), 200
 
